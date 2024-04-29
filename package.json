@@ -2,10 +2,12 @@
   "name": "volunteeria",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.html",
   "scripts": {
     "tw": "npx tailwindcss -i ./assets/style/input.css -o ./assets/style/output.css --watch",
-    "watchdb": "json-server --watch data/db.json"
+    "watchdb": "json-server --watch data/db.json",
+    "start": "parcel index.html",
+    "build": "parcel build index.html"
   },
   "keywords": [],
   "author": "",
