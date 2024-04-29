@@ -9,6 +9,12 @@
     "start": "parcel index.html",
     "build": "parcel build index.html --dist-dir ./dist"
   },
+  "liveServer.settings.proxy": {
+    "enable": true,
+    "baseUri": "/",
+    "proxyUri": "http://localhost:8080/php/"
+  },
+  "liveServer.settings.CustomBrowser": "chrome",
   "keywords": [],
   "author": "",
   "license": "ISC",
