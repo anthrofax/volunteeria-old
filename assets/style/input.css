@@ -1,0 +1,242 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+@keyframes bounceFeature {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-50px);
+  }
+}
+@keyframes secondTitleAnimation {
+  0% {
+    transform: translateY(-10rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes secondTextAnimation {
+  0% {
+    transform: translateY(5rem);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+.btn {
+  border-radius: 30px;
+  position: relative;
+  background-image: #5F7ADB;
+  max-width: -moz-max-content;
+  max-width: max-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  height: 50px;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.btn::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 250%;
+  padding-block-end: 250%;
+  background-color: #556dc4;
+  transform: translate(-50%, -50%) scale(0);
+  border-radius: 50%;
+  z-index: -1;
+  transition: transform 2s linear;
+}
+
+.btn:is(:hover, :focus-visible)::before {
+  transform: translate(-50%, -50%) scale(5);
+  color: white;
+}
+
+/* Untuk cek, apakah section Jumbotron sedang di hover atau tidak */
+.jumbotron:hover {
+  opacity: 0.99999;
+}
+
+.tips-scrollable-element::-webkit-scrollbar {
+  display: none;
+}
+
+.apply-form::-webkit-scrollbar {
+  display: none;
+}
+
+@layer components {
+  /* Navbar */
+  .sticky-navbar {
+    @apply fixed top-0 left-0 right-0 opacity-80 z-10;
+  }
+  .hover-text {
+    @apply hover:text-purple1 duration-500;
+  }
+  .nav-links {
+    @apply hover:text-purple1 hover:underline-offset-0 duration-500;
+  }
+  .hoverable-link {
+    position: relative;
+  }
+  .hoverable-link:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 3px;
+    width: 100%;
+    background-color: #5f7adb;
+    transform: scaleX(0);
+    transition: 0.3s;
+    transition-timing-function: ease-in-out;
+  }
+  .active-link:after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    height: 3px;
+    width: 100%;
+    background-color: #5f7adb;
+    transform: scaleX(0);
+    transition: 0.3s;
+    transition-timing-function: ease-in-out;
+  }
+  .hoverable-link:hover:after {
+    transform: scaleX(1);
+  }
+  .burger-animate {
+    @apply translate-x-0 w-12;
+  }
+  /* Jumbotron */
+  .jumbtotron-button {
+    @apply bg-purple1 p-2 text-sm sm:p-3 rounded-lg hover:bg-palewhite hover-text;
+  }
+  .prevnext-jumbotron-button {
+    @apply h-16 sm:h-24 bg-black w-[5vw] lg:w-[3vw] flex items-center justify-center absolute duration-500 hover:scale-125 hover:bg-palewhite active:bg-black1;
+  }
+  .jumbotron-text {
+    @apply h-fit gap-3 flex-col items-center text-palewhite absolute w-[80vw];
+  }
+  .first-text-animation {
+    @apply opacity-100 lg:translate-x-10;
+  }
+  .second-title-animation {
+    @apply opacity-100;
+    animation: secondTitleAnimation 2s 1 backwards;
+  }
+  .second-text-animation {
+    @apply opacity-100;
+    animation: secondTextAnimation 2s 0.5s 1 backwards;
+  }
+  .third-text-animation {
+    @apply opacity-100 lg:-translate-x-10;
+  }
+  /* Feature Section */
+  .fitur-website {
+    @apply flex gap-3 flex-col justify-center items-center p-5 bg-purple1 text-white dark:text-palewhite  dark:bg-black2 shadow-[0_0_20px_0_rgba(0,0,0,0.5)] rounded-lg dark:shadow-[0_0_20px_0_rgba(95,122,219,0.2)] text-center max-w-xs sm:max-w-md duration-1000 hover:-translate-y-4;
+  }
+  .feature-line {
+    @apply w-0 h-[2px] bg-purple1/50 duration-1000;
+  }
+  /* Contribution Section */
+  .kontribusi {
+    @apply flex flex-col items-center text-center gap-5 duration-1000 ease-out;
+  }
+  .contribution-header {
+    @apply text-base sm:text-lg md:text-xl order-1;
+  }
+  .contribution-caption {
+    @apply text-sm sm:text-lg lg:text-base order-3  w-[80%];
+  }
+  .contribution-image {
+    @apply max-w-[16rem] sm:max-w-[18rem] lg:max-w-sm order-2;
+  }
+  .contribution-r-animation {
+    @apply translate-x-[7vw] opacity-0 scale-50;
+  }
+  .contribution-l-animation {
+    @apply -translate-x-[7vw] opacity-0 scale-50;
+  }
+  /* Supported */
+  .organization-card {
+    @apply bg-white dark:bg-palewhite py-9 px-4 rounded-lg outline outline-purple2 flex flex-col justify-center items-center w-28 min-w-[112px] h-48 text-center hover:shadow-2xl hover:-translate-y-4 hover:outline-purple1 hover:bg-palewhite/90 transition-all;
+  }
+  .organization-img {
+    @apply w-24 h-auto;
+  }
+  /* Review */
+  .card-rating {
+    @apply absolute left-[15%] rounded-xl flex flex-col gap-y-2 px-10 py-14 bg-purple1 dark:bg-palewhite items-center sm:items-start justify-center h-full w-[70%] text-white dark:text-black1 duration-1000 hover:bg-purple1/80 dark:hover:bg-slate-300 cursor-pointer;
+  }
+  .card-header-box {
+    @apply max-sm:max-w-[100px] max-sm:flex max-sm:flex-col max-sm:items-center grid grid-cols-2 items-end gap-x-2 justify-start  w-fit;
+  }
+  .card-img-text {
+    @apply flex flex-col items-center pb-2 sm:items-start text-xs sm:text-sm lg:text-base;
+  }
+  .card-user-img {
+    @apply max-w-[80px] lg:max-w-[100px];
+  }
+  .card-user-name {
+    @apply text-lg sm:text-xl lg:text-2xl text-center;
+  }
+  .card-description {
+    @apply text-center text-sm  sm:text-start lg:text-lg;
+  }
+  .carousel-button {
+    @apply absolute w-14 h-14 text-5xl bg-palewhite dark:bg-purple1  z-10 rounded-full flex items-center justify-center top-1/2 -translate-y-1/2  hover:bg-purple2 hover:text-palewhite dark:hover:bg-black2 dark:hover:text-purple1 text-purple1 dark:text-palewhite duration-500;
+  }
+  .dot-active {
+    background-color: rgb(95, 122, 219);
+  }
+  /* FAQ */
+  .faq-accordion {
+    @apply flex items-center justify-between w-full max-lg:p-5 lg:px-5 lg:py-8 font-medium text-left text-black border border-b-0 border-gray-200  dark:border-palewhite dark:text-palewhite hover:bg-[#556dc4] hover:text-white dark:hover:text-white;
+  }
+  .faq-question {
+    @apply text-base lg:text-lg;
+  }
+  .faq-answer {
+    @apply mb-2 text-gray-700 dark:text-gray-500 text-xs lg:text-lg;
+  }
+  /* Footer */
+  .footer-links-title {
+    @apply font-semibold text-sm lg:text-lg;
+  }
+  /* Tips Volunteer */
+  /* --- DAFTAR LOWONGAN PAGE --- */
+  /* Daftar Lowongan */
+  .daftar-lowongan {
+    @apply w-full  p-5 text-sm rounded-lg shadow-[0_0_25px_-10px_rgba(0,0,0,0.3)] dark:shadow-[0_0_25px_-15px_rgba(95,122,219,0.5)] border dark:border-palewhite/10 bg-white dark:bg-black2;
+  }
+  .mini-news {
+    @apply shadow-[0_0_25px_-10px_rgba(0,0,0,0.3)] dark:shadow-[0_0_15px_-5px_rgba(95,122,219,0.2)] rounded-lg max-w-[20rem] bg-white dark:bg-black1 text-black1 dark:text-white inline-block mr-5 whitespace-normal h-64 align-middle lg:w-72 lg:h-96 relative;
+  }
+}
+/* --- TENTANG KAMI PAGE --- */
+.identity-list {
+  @apply font-poppins;
+}
+
+.identity-title {
+  @apply text-lg font-medium tracking-widest mb-2 mt-3;
+}
+
+.identity-caption {
+  @apply leading-7 text-xs sm:text-sm sm:leading-8;
+}
+
+.developer-name {
+  @apply text-base sm:text-lg font-medium;
+}
+
+.developer-part {
+  @apply text-xs sm:text-base italic font-light;
+}/*# sourceMappingURL=input.css.map */
